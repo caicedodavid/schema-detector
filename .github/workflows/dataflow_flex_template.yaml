@@ -29,6 +29,7 @@ jobs:
       run: |
         pip install pytest==7.2.2
         pip install apache-beam[gcs,test]==2.46.0
+        pip install google-apitools==0.5.31
 
     - name: Run tests
       run: |
