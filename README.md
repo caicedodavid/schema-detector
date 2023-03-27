@@ -15,16 +15,24 @@ Schema Detector is a Google Cloud Dataflow pipeline designed to analyze JSONL fi
 ## Installation
 1. Clone the repository:
 
-`git clone https://github.com/caicedodavid/schema-detector.git`
+```sh
+git clone https://github.com/caicedodavid/schema-detector.git`
+```
 
 2. Change into the cloned repository directory:
 
-`cd schema-detector`
+```sh
+cd schema-detector
+```
 
 3. Install the required dependencies:
 
-`pipenv install --dev`
+```sh
+pipenv install --dev
+```
 
 4. Run with direct runner:
 
-`python3 main.py --project your-project --region region --runner direct --inputPath gs://bucket/jsonl_path/ --outputDataset dataset --outputTable table --tempGcsLocation gs://temp_bucket`
+```sh
+python3 main.py --project your-project --region region --runner direct --inputPath gs://bucket/jsonl_path/ --outputDataset dataset --outputTable table --tempGcsLocation gs://temp_bucket
+```
