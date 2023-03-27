@@ -55,8 +55,8 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
     :return: dict - the combined output from all JSONL files as a single dictionary
     """
     opts, pipeline_opts = parse_arguments()
+    print(pipeline_opts)
     options = PipelineOptions(pipeline_opts)
-
     with beam.Pipeline(options=options) as pipeline:
         parsed_records = (
             pipeline
