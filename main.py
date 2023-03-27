@@ -24,9 +24,6 @@ def parse_arguments() -> Tuple[Namespace, List[str]]:
     :return: Tuple[Namespace, list] - the parsed arguments and any remaining arguments
     """
     parser = ArgumentParser(description="Load from Json into BigQuery")
-    parser.add_argument("--project", required=True, help="Specify Google Cloud project")
-    parser.add_argument("--region", required=False, help="Specify Google Cloud region")
-    parser.add_argument("--runner", required=True, help="Specify Apache Beam Runner")
     parser.add_argument("--inputPath", required=True, help="Path to events.json")
     parser.add_argument(
         "--outputDataset", required=True, help="Dataset name to write records"
@@ -54,14 +51,8 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
     """
     opts, pipeline_opts = parse_arguments()
     options = PipelineOptions(pipeline_opts)
-    options.view_as(GoogleCloudOptions).project = opts.project
-    options.view_as(GoogleCloudOptions).region = opts.region
-    options.view_as(GoogleCloudOptions).job_name = "{0}{1}".format(
-        "my-pipeline-", time.time_ns()
-    )
-    options.view_as(StandardOptions).runner = opts.runner
 
-    with beam.Pipeline() as pipeline:
+    with beam.Pipeline(options=options) as pipeline:
         parsed_records = (
             pipeline
             | "Read Files" >> ReadFromText(opts.inputPath + "*.jsonl")
@@ -76,7 +67,7 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
             schema
             | "Update table Schema"
             >> beam.ParDo(
-                UpdateSchema(opts.project, opts.outputDataset, opts.outputTable)
+                UpdateSchema("visualizacion-1559665805251", opts.outputDataset, opts.outputTable)
             )
         )
         (
