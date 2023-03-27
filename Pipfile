@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 apache-beam = {extras = ["gcp"], version = "*"}
+google-cloud-bigquery = "*"
 
 [dev-packages]
 apache-beam = {extras = ["test"], version = "*"}

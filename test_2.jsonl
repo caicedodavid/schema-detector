@@ -1,0 +1,11 @@
+{"age": 20, "gender": "female", "name": "Alice"}
+{"age": 25, "gender": "male", "income": 50000, "name": "Wookie"}
+{"age": 30, "gender": "male", "is_student": false, "name": "miss"}
+{"gender": "female", "hobbies": ["reading"], "name": "missu"}
+{"gender": "male", "is_employed": true, "name": "missaa"}
+{"gender": "non-binary", "name": "Sam"}
+{"income": 100000, "name": "John"}
+{"location": {"city": "San Francisco", "state": "CA"}, "name": "miu"}
+{"name": "Sarah", "relationship_status": "single"}
+{"name": "David", "height": 6.2}
+{"name": "David", "smart": true}

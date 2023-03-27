@@ -1,0 +1,49 @@
+{
+  "name": "Streaming beam Python flex template",
+  "description": "Streaming beam example for python flex template.",
+  "parameters": [
+    {
+      "name": "project",
+      "label": "Project",
+      "helpText": "ProjectId to execute.",
+      "isOptional": false
+    },
+    {
+      "name": "region",
+      "label": "Region",
+      "helpText": "Region to execute.",
+      "isOptional": false
+    },
+    {
+      "name": "runner",
+      "label": "Runner",
+      "helpText": "Runner to use",
+      "isOptional": false
+    },
+    {
+      "name": "inputPath",
+      "label": "GCS path",
+      "helpText": "GCS input path of files to detect schema",
+      "isOptional": false
+    },
+    {
+      "name": "outputDataset",
+      "label": "Dataset",
+      "helpText": "BigQuery output dataset name.",
+      "isOptional": false
+    },
+    {
+      "name": "outputTable",
+      "label": "Table",
+      "helpText": "Name of the BigQuery output table name.",
+      "isOptional": false
+    },
+    {
+      "name": "tempGcsLocation",
+      "label": "Temporary GCS",
+      "helpText": "Temporary GCS location to save intermediate results.",
+      "isOptional": false
+    }
+  ]
+}
+
