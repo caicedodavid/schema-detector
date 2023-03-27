@@ -25,6 +25,12 @@
       "label": "Temporary GCS",
       "helpText": "Temporary GCS location to save intermediate results.",
       "isOptional": false
+    },
+    {
+      "name": "projectId",
+      "label": "GCP project id",
+      "helpText": "GCP project id.",
+      "isOptional": false
     }
   ]
 }

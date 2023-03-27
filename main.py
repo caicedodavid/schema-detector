@@ -36,6 +36,11 @@ def parse_arguments() -> Tuple[Namespace, List[str]]:
         required=True,
         help="GCS bucket location to write temporary results",
     )
+    parser.add_argument(
+        "--projectId",
+        required=True,
+        help="GCS bucket location to write temporary results",
+    )
 
     return parser.parse_known_args()
 
@@ -67,7 +72,7 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
             schema
             | "Update table Schema"
             >> beam.ParDo(
-                UpdateSchema("visualizacion-1559665805251", opts.outputDataset, opts.outputTable)
+                UpdateSchema(opts.projectId, opts.outputDataset, opts.outputTable)
             )
         )
         (
@@ -76,7 +81,7 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
             >> WriteToBigQuery(
                 table=opts.outputTable,
                 dataset=opts.outputDataset,
-                project=opts.project,
+                project=opts.projectId,
                 schema=lambda _, schema: convert_schema_to_table_schema(schema),
                 schema_side_inputs=(AsSingleton(schema),),
                 create_disposition=BigQueryDisposition.CREATE_IF_NEEDED,
