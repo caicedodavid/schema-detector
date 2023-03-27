@@ -3,24 +3,6 @@
   "description": "Streaming beam example for python flex template.",
   "parameters": [
     {
-      "name": "project",
-      "label": "Project",
-      "helpText": "ProjectId to execute.",
-      "isOptional": false
-    },
-    {
-      "name": "region",
-      "label": "Region",
-      "helpText": "Region to execute.",
-      "isOptional": false
-    },
-    {
-      "name": "runner",
-      "label": "Runner",
-      "helpText": "Runner to use",
-      "isOptional": false
-    },
-    {
       "name": "inputPath",
       "label": "GCS path",
       "helpText": "GCS input path of files to detect schema",
@@ -39,7 +21,7 @@
       "isOptional": false
     },
     {
-      "name": "tempGcsLocation",
+      "name": "customGcsTempLocation",
       "label": "Temporary GCS",
       "helpText": "Temporary GCS location to save intermediate results.",
       "isOptional": false

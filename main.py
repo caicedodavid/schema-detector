@@ -35,7 +35,7 @@ def parse_arguments() -> Tuple[Namespace, List[str]]:
         "--outputTable", required=True, help="Table name to write records"
     )
     parser.add_argument(
-        "--tempGcsLocation",
+        "--customGcsTempLocation",
         required=True,
         help="GCS bucket location to write temporary results",
     )
@@ -90,7 +90,7 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
                 schema_side_inputs=(AsSingleton(schema),),
                 create_disposition=BigQueryDisposition.CREATE_IF_NEEDED,
                 write_disposition=BigQueryDisposition.WRITE_APPEND,
-                custom_gcs_temp_location=opts.tempGcsLocation,
+                custom_gcs_temp_location=opts.customGcsTempLocation,
             )
         )
 
@@ -98,3 +98,4 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
 if __name__ == "__main__":
     opts, pipeline_opts = parse_arguments()
     combined_dict_output = run_pipeline(opts, pipeline_opts)
+
