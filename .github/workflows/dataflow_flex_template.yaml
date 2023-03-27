@@ -9,7 +9,7 @@ on:
       - main
 
 env:
-  PROJECT_ID:  visualizacion-1559665805251
+  PROJECT_ID: visualizacion-1559665805251
   IMAGE_NAME: schema-detector-repo/schema-detector
   IMAGE_TAG: latest
 
@@ -53,4 +53,4 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        gcloud builds submit --tag "us-central1-docker.pkg.dev/{{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:latest" .
+        gcloud builds submit --tag "us-central1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:latest" .
