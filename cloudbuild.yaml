@@ -3,7 +3,8 @@ steps:
   args:
   - "build"
   - "--tag"
-  - 'us-central1-docker.pkg.dev/visualizacion-1559665805251/schema-detector-repo/schema-detector:latest'
+  - "us-central1-docker.pkg.dev/visualizacion-1559665805251/schema-detector-repo/schema-detector:latest"
   - "."
+images: [us-central1-docker.pkg.dev/visualizacion-1559665805251/schema-detector-repo/schema-detector:latest]
 options:
   logging: CLOUD_LOGGING_ONLY
