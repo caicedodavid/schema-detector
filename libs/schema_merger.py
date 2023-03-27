@@ -7,9 +7,10 @@ from libs.constants import MODE_NULLABLE, MODE_REPEATED, MODE_REQUIRED
 class SchemaMerger:
     schema1: dict
     schema2: dict
+
     def merge(self) -> dict:
         return self._merge_record_schemas(self.schema1, self.schema2)
-    
+
     def _merge_record_schemas(self, accumulator_schema: dict, input_schema: dict):
         """
         Merges two record schemas into one.
@@ -32,7 +33,7 @@ class SchemaMerger:
                     value["mode"] = MODE_NULLABLE
 
                 accumulator_schema[key] = value
-        
+
         for key, value in input_schema.items():
             is_repeated_mode = value["mode"] == MODE_REPEATED
             if not is_repeated_mode:
@@ -40,7 +41,7 @@ class SchemaMerger:
 
         return accumulator_schema | input_schema
 
-    def _merge_schemas(self, schema1 : dict, schema2: dict) -> dict:
+    def _merge_schemas(self, schema1: dict, schema2: dict) -> dict:
         """
         Merges two schemas into one.
 
@@ -55,26 +56,35 @@ class SchemaMerger:
         schema1_type = schema1.get("type")
         schema2_type = schema2.get("type")
         if schema1_type != schema2_type:
-            raise IncompatibleSchemasException(f"Got different types for field {field_name} {schema1_type} AND {schema2_type}")
-        
+            raise IncompatibleSchemasException(
+                f"Got different types for field {field_name} {schema1_type} AND {schema2_type}"
+            )
+
         schema1_mode = schema1.get("mode")
         schema2_mode = schema2.get("mode")
         is_same_mode = schema1_mode == schema2_mode
         mode = {}
         if (schema1_mode == MODE_REPEATED) and is_same_mode:
             mode = {"mode": MODE_REPEATED}
-        elif ((schema1_mode == MODE_REPEATED) or (schema2_mode == MODE_REPEATED)) and not is_same_mode:
-            raise IncompatibleSchemasException(f"The field {field_name} is not repeated for all the records")
+        elif (
+            (schema1_mode == MODE_REPEATED) or (schema2_mode == MODE_REPEATED)
+        ) and not is_same_mode:
+            raise IncompatibleSchemasException(
+                f"The field {field_name} is not repeated for all the records"
+            )
         elif (schema1_mode == MODE_REQUIRED) and is_same_mode:
             mode = {"mode": MODE_REQUIRED}
         else:
             mode = {"mode": MODE_NULLABLE}
-        
+
         if schema1_type != "RECORD":
             return schema1 | mode
-   
+
         schema1_fields = schema1.get("fields")
         schema2_fields = schema2.get("fields")
-        result = schema1 | mode | {"fields": self._merge_record_schemas(schema1_fields, schema2_fields)}
+        result = (
+            schema1
+            | mode
+            | {"fields": self._merge_record_schemas(schema1_fields, schema2_fields)}
+        )
         return result
-

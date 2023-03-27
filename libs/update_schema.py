@@ -8,11 +8,18 @@ from google.api_core.exceptions import NotFound
 
 @dataclass
 class UpdateSchema(DoFn):
+    """A DoFn to update the schema of a BigQuery table."""
+
     project: str
     dataset: str
     table: str
-    
+
     def process(self, schema: List[dict]):
+        """Updates the schema of a BigQuery table.
+
+        Args:
+            schema (List[dict]): The new schema for the table.
+        """
         client = bigquery.Client()
         schema = [bigquery.SchemaField.from_api_repr(field) for field in schema]
         table_ref = client.dataset(self.dataset, self.project).table(self.table)
@@ -23,4 +30,3 @@ class UpdateSchema(DoFn):
         except NotFound:
             table = bigquery.Table(table_ref, schema=schema)
             table = client.create_table(table)
-        
