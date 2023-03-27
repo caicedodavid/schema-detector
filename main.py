@@ -1,7 +1,3 @@
-"""
-Runs a pipeline to read in all JSONL files from a GCS path and uses the JsonDictParse Map to parse each record as a dictionary.
-Utilizes a SchemaCombine global function to yield one final output.
-"""
 import time
 from typing import List, Tuple
 from argparse import ArgumentParser, Namespace
