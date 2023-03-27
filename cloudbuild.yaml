@@ -1,0 +1,5 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--network', 'cloudbuild', '--no-cache', '-t', 'us-central1-docker.pkg.dev/visualizacion-1559665805251/schema-detector-repo/schema-detector:latest', '.']
+options:
+  logging: CLOUD_LOGGING_ONLY

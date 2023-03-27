@@ -53,4 +53,4 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        gcloud builds submit --tag "us-central1-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:latest" .
+        gcloud builds submit --config cloudbuild.yaml
