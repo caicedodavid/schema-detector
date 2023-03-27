@@ -28,7 +28,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install pytest==7.2.2
-        pip install apache-beam[tests]==2.46.0
+        pip install apache-beam==2.46.0
 
     - name: Run tests
       run: |
