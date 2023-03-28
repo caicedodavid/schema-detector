@@ -3,7 +3,6 @@ ARG WORKDIR=/dataflow/template
 
 RUN mkdir -p ${WORKDIR}
 WORKDIR ${WORKDIR}
-ARG TEMPLATE_NAME=schema_detector
 COPY . .
 
 ENV FLEX_TEMPLATE_PYTHON_REQUIREMENTS_FILE="${WORKDIR}/requirements.txt"

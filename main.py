@@ -55,7 +55,6 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
     """
     options = PipelineOptions(pipeline_opts)
     pipeline_opts.append("--project=visualizacion-1559665805251")
-    print("************************************************************")
     with beam.Pipeline(options=options) as pipeline:
         parsed_records = (
             pipeline
