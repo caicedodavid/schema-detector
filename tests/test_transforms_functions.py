@@ -1,7 +1,7 @@
 import pytest
 
-from libs.exceptions import HeterogeneousListException, UnidentifiedTypeException
-from libs.transform_functions import (
+from schema_detector.libs.exceptions import HeterogeneousListException, UnidentifiedTypeException
+from schema_detector.libs.transform_functions import (
     parse_element, is_elements_of_same_type, get_big_query_types, generate_schema,
     get_big_query_schema, convert_schema_to_table_schema
 )

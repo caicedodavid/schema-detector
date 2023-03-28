@@ -1,8 +1,8 @@
 from typing import List
 from apache_beam import CombineFn
 
-from libs.schema_merger import SchemaMerger
-from libs.transform_functions import get_big_query_schema
+from schema_detector.libs.schema_merger import SchemaMerger
+from schema_detector.libs.transform_functions import get_big_query_schema
 
 
 class SchemaCombine(CombineFn):

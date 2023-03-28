@@ -1,7 +1,7 @@
 import pytest
 
-from libs.exceptions import IncompatibleSchemasException
-from libs.schema_merger import SchemaMerger
+from schema_detector.libs.exceptions import IncompatibleSchemasException
+from schema_detector.libs.schema_merger import SchemaMerger
 
 
 def test_merge_schemas_different_types():

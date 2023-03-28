@@ -1,5 +1,6 @@
 # Ignore everything except for Python files and the requirements file.
 *
-!libs/
-!libs/*.py
+!schema_detector/
+!schema_detector/**/*.py
 !requirements.txt
+!*.py

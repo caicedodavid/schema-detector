@@ -8,13 +8,13 @@ from apache_beam.options.pipeline_options import GoogleCloudOptions
 from apache_beam.options.pipeline_options import PipelineOptions
 from apache_beam.options.pipeline_options import StandardOptions
 from apache_beam.pvalue import AsSingleton
-from libs.transform_functions import (
+from schema_detector.libs.transform_functions import (
     parse_element,
     generate_schema,
     convert_schema_to_table_schema,
 )
-from libs.schema_combine import SchemaCombine
-from libs.update_schema import UpdateSchema
+from schema_detector.libs.schema_combine import SchemaCombine
+from schema_detector.libs.update_schema import UpdateSchema
 
 
 def parse_arguments() -> Tuple[Namespace, List[str]]:

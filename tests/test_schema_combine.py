@@ -2,7 +2,7 @@ from typing import List
 import pytest
 from apache_beam.testing.util import assert_that, equal_to
 from apache_beam.transforms import Create, CombineGlobally
-from libs.schema_combine import SchemaCombine
+from schema_detector.libs.schema_combine import SchemaCombine
 
 
 @pytest.fixture

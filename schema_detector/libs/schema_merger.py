@@ -1,6 +1,6 @@
 from dataclasses import dataclass
-from libs.exceptions import IncompatibleSchemasException
-from libs.constants import MODE_NULLABLE, MODE_REPEATED, MODE_REQUIRED
+from schema_detector.libs.exceptions import IncompatibleSchemasException
+from schema_detector.libs.constants import MODE_NULLABLE, MODE_REPEATED, MODE_REQUIRED
 
 
 @dataclass

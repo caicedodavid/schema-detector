@@ -2,8 +2,8 @@ from apache_beam import Map
 from apache_beam.transforms import Create, CombineGlobally
 from apache_beam.testing.util import assert_that, equal_to
 
-from libs.transform_functions import generate_schema
-from libs.schema_combine import SchemaCombine
+from schema_detector.libs.transform_functions import generate_schema
+from schema_detector.libs.schema_combine import SchemaCombine
 
 def test_integrate_generate_schema_with_schema_combine(pipeline):
     records = [

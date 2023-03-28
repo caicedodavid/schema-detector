@@ -4,9 +4,9 @@ from apache_beam.io.gcp.internal.clients.bigquery.bigquery_v2_messages import (
     TableSchema,
     TableFieldSchema,
 )
-from libs.constants import MODE_REQUIRED, MODE_REPEATED
-from libs.exceptions import HeterogeneousListException, UnidentifiedTypeException
-from libs.schema_merger import SchemaMerger
+from schema_detector.libs.constants import MODE_REQUIRED, MODE_REPEATED
+from schema_detector.libs.exceptions import HeterogeneousListException, UnidentifiedTypeException
+from schema_detector.libs.schema_merger import SchemaMerger
 
 
 def parse_element(element: str):

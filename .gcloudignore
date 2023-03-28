@@ -1,7 +1,7 @@
 # Ignore everything except for Python files and the requirements file.
 *
 !Dockerfile
-!*.py
+!schema_detector/
+!schema_detector/**/*.py
 !requirements.txt
-!libs/
-!libs/*.py
+!*.py
