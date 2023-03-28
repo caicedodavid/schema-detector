@@ -1,4 +1,3 @@
-import time
 from typing import List, Tuple
 from argparse import ArgumentParser, Namespace
 import apache_beam as beam
