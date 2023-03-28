@@ -30,3 +30,5 @@ class UpdateSchema(DoFn):
         except NotFound:
             table = bigquery.Table(table_ref, schema=schema)
             table = client.create_table(table)
+
+        return [True]

@@ -66,7 +66,7 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
             | "Generate schema for each record" >> beam.Map(generate_schema)
             | "Combine Dictionaries" >> beam.CombineGlobally(SchemaCombine())
         )
-        (
+        placeholder = (
             schema
             | "Update table Schema"
             >> beam.ParDo(
@@ -80,8 +80,8 @@ def run_pipeline(opts: Namespace, pipeline_opts: List[str]) -> None:
                 table=opts.outputTable,
                 dataset=opts.outputDataset,
                 project=opts.projectId,
-                schema=lambda _, schema: convert_schema_to_table_schema(schema),
-                schema_side_inputs=(AsSingleton(schema),),
+                schema=lambda _, schema, ignore: convert_schema_to_table_schema(schema),
+                schema_side_inputs=(AsSingleton(schema), AsSingleton(placeholder),),
                 create_disposition=BigQueryDisposition.CREATE_IF_NEEDED,
                 write_disposition=BigQueryDisposition.WRITE_APPEND,
                 custom_gcs_temp_location=opts.customGcsTempLocation,
